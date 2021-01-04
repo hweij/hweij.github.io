@@ -23,8 +23,18 @@
         }
 
         #divMenu {
+            margin-top: 1em;
             display: flex;
             flex-direction: column;
+        }
+
+        #divNav {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
         }
     </style>
 </head>
@@ -34,8 +44,9 @@
         <div id="divUI" style="position: absolute; top: 0px; left: 0px;">
             <button id="bMenu">Menu</button>
             <div id="divMenu">
-                <button id="bReset">Reset</button>
             </div>
+        </div>
+        <div id="divNav">
         </div>
         <div id="divMessage" style="position: absolute; bottom: 10px; left: 10px;"></div>
     </div>
