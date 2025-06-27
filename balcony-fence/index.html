@@ -60,29 +60,39 @@
             const material = new THREE.MeshPhongMaterial({ color: '#fff' });
 
             {
+                // Number of horizontal bars
+                const nBars = 3;
+                // Total fence height
+                const hFence = 1;
+                // Top thickness
+                const hTop = 0.05;
+                // Height, underneath top
+                const hCol = hFence - hTop;
+                // Horizontal bat height
+                const hBar = 0.09;
+                // Vertical space between horizontal bars
+                const dBar = (hCol - (nBars * hBar)) / (nBars + 1);
+                // Bar pitch
+                const pitchBar = hBar + dBar;
+
                 // Columns
-                const col1 = new THREE.Mesh(geometry, material);
-                col1.position.set(-0.5, 0.475, 0);
-                col1.scale.set(0.1, 0.95, 0.1);
-                const col2 = new THREE.Mesh(geometry, material);
-                col2.position.set(0.5, 0.475, 0);
-                col2.scale.set(0.1, 0.95, 0.1);
-                scene.add(col1, col2);
+                for (let x of [-0.5, 0.5]) {
+                    const col = new THREE.Mesh(geometry, material);
+                    col.position.set(x, hCol / 2, 0);
+                    col.scale.set(0.1, hCol, 0.1);
+                    scene.add(col);
+                }
                 // Hor bars
-                const bar1 = new THREE.Mesh(geometry, material);
-                bar1.position.set(0, 0.25, 0);
-                bar1.scale.set(1.4, 0.09, 0.05);
-                const bar2 = new THREE.Mesh(geometry, material);
-                bar2.position.set(0, 0.5, 0);
-                bar2.scale.set(1.4, 0.09, 0.05);
-                const bar3 = new THREE.Mesh(geometry, material);
-                bar3.position.set(0, 0.75, 0);
-                bar3.scale.set(1.4, 0.09, 0.05);
-                scene.add(bar1, bar2, bar3);
+                for (let i = 1; i <= nBars; i++) {
+                    const bar = new THREE.Mesh(geometry, material);
+                    bar.position.set(0, i * pitchBar - (hBar / 2), 0);
+                    bar.scale.set(1.4, hBar, 0.05);
+                    scene.add(bar);
+                }
                 // Top
                 const counterTop = new THREE.Mesh(geometry, material);
-                counterTop.position.set(0, 0.975, 0);
-                counterTop.scale.set(1.4, 0.05, 0.3);
+                counterTop.position.set(0, hFence - (hTop / 2), 0);
+                counterTop.scale.set(1.4, hTop, 0.3);
                 scene.add(counterTop);
             }
 
