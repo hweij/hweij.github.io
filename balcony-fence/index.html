@@ -10,17 +10,16 @@
 
 <body>
     <script type="importmap">
-                            {
-                                "imports": {
-                                "three": "./three.module.js",
-                            "three/addons/": "./jsm/"
-				}
-			}
-                        </script>
+        {
+            "imports": {
+                "three": "./three.module.js"
+            }
+        }
+    </script>
 
     <script type="module">
 
-        import * as THREE from './three.module.js';
+        import * as THREE from 'three';
         import { OrbitControls } from './OrbitControls.js';
 
         let camera, scene, renderer;
@@ -30,6 +29,16 @@
         var controls;
 
         function init() {
+            /** Number of horizontal bars in the fence */
+            let numBars = 3;
+            {
+                // Check if number of bars is specified in the query params
+                const urlParams = new URLSearchParams(window.location.search);
+                const pBars = urlParams.get('bars');
+                if (pBars) {
+                    numBars = Number.parseInt(pBars);
+                }
+            }
 
             camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 100);
             camera.position.set(0, 1.5, 2);
@@ -60,8 +69,6 @@
             const material = new THREE.MeshPhongMaterial({ color: '#fff' });
 
             {
-                // Number of horizontal bars
-                const nBars = 3;
                 // Total fence height
                 const hFence = 1;
                 // Top thickness
@@ -71,7 +78,7 @@
                 // Horizontal bat height
                 const hBar = 0.09;
                 // Vertical space between horizontal bars
-                const dBar = (hCol - (nBars * hBar)) / (nBars + 1);
+                const dBar = (hCol - (numBars * hBar)) / (numBars + 1);
                 // Bar pitch
                 const pitchBar = hBar + dBar;
 
@@ -83,7 +90,7 @@
                     scene.add(col);
                 }
                 // Hor bars
-                for (let i = 1; i <= nBars; i++) {
+                for (let i = 1; i <= numBars; i++) {
                     const bar = new THREE.Mesh(geometry, material);
                     bar.position.set(0, i * pitchBar - (hBar / 2), 0);
                     bar.scale.set(1.4, hBar, 0.05);
