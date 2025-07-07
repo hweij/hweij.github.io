@@ -1,0 +1,7 @@
+{
+    "name": "El Nido - App hosting PWA",
+    "short_name": "El Nido",
+    "start_url": "./index.html",
+    "display": "fullscreen",
+    "orientation": "landscape"
+}
