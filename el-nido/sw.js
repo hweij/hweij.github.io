@@ -6,40 +6,19 @@ const version = "0.0.1";
 /** @type string */
 const MAIN_CACHE_NAME = "el-nido";
 
+/** Index page of the main app: when loaded we switch back to the main cache */
+const MAIN_INDEX_PAGE = MAIN_CACHE_NAME + ".html";
+
 let appName = MAIN_CACHE_NAME;
 
 console.log(`[SW] version ${version}`);
 console.log(`[SW] cache name: ${appName}`);
 
-// Files to be cached on software update
-const cacheFiles = ["./index.html", "./manifest.json", "./bundle.js", "./bundle.css"];
-
-async function reInstall() {
-    appName = MAIN_CACHE_NAME;
-    const cache = await caches.open(MAIN_CACHE_NAME);
-    console.log(`[SW] Caching ${cacheFiles.length} assets`);
-    try {
-        await cache.addAll(cacheFiles);
-        // Special path: el-nido resets app
-        const resp = await cache.match("./index.html");
-        if (resp) {
-            cache.put("el-nido", resp);
-        }
-    }
-    catch (e) {
-        console.log(`Error while caching assets:`);
-        console.log(e);
-    }
-    console.log(`[SW] ${(await cache.keys()).length} files in cache`);
-}
 
 // Service worker install: create cache
-self.addEventListener('install', (/** @type ExtendableEvent */ e) => {
+self.addEventListener('install', async (/** @type ExtendableEvent */ e) => {
     console.log('[SW] Install');
-    self.skipWaiting();
-    e.waitUntil((async () => {
-        await reInstall();
-    })());
+    await self.skipWaiting();
 });
 
 self.addEventListener('activate', (/** @type ExtendableEvent */ event) => {
@@ -60,6 +39,12 @@ self.addEventListener('fetch',
         console.log(e.request.url);
 
         e.respondWith((async () => {
+            // Check if the "magic" url is requested. If so, go back to the main app
+            if (e.request.url.endsWith(MAIN_INDEX_PAGE) && (appName !== MAIN_CACHE_NAME)) {
+                // Return to main app
+                appName = MAIN_CACHE_NAME;
+            }
+
             const r = await caches.match(e.request, { cacheName: appName, ignoreSearch: true });
             if (r) {
                 console.log(`[SW] Fetch from cache: ${e.request.url}`);
@@ -80,18 +65,6 @@ self.addEventListener('fetch',
                 return response;
             }
             else {
-                // Check if the "magic" url is requested. If so, go back to the main app
-                if (e.request.url.endsWith(MAIN_CACHE_NAME)) {
-                    // Return to main app
-                    appName = MAIN_CACHE_NAME;
-                    const match = await caches.match(e.request, { cacheName: appName, ignoreSearch: true });
-                    if (match) {
-                        return match;
-                    }
-                    else {
-                        return new Response("Not found", { status: 404 });
-                    }
-                }
                 console.error(`Cannot find url ${e.request.url} for app ${appName}`);
             }
             return new Response("Not found", { status: 404 });
@@ -106,7 +79,8 @@ addEventListener("message", (event) => {
         case "launch":
             appName = event.data.app;
             console.log(`Set app name to ${appName}`);
-            event.source?.postMessage({ cmd: "reload" });
+            // Navigate to index.html of the selected app
+            event.source?.postMessage({ cmd: "index" });
             break;
     }
 });
