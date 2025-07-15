@@ -1,6 +1,11 @@
 {
-    "name": "El Nido - App hosting PWA",
+    "name": "El Nido",
     "short_name": "El Nido",
-    "start_url": "./el-nido.html",
-    "display": "fullscreen"
+    "start_url": "el-nido.html",
+    "display": "fullscreen",
+    "icons": [
+        {
+            "src": "el-nido.svg"
+        }
+    ]
 }
