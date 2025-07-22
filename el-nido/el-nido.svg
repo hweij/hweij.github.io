@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
-   sodipodi:docname="el-nido.svg"
+   sodipodi:docname="el-nido-alt.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,13 +24,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="2.3823885"
-     inkscape:cx="312.08176"
-     inkscape:cy="224.56455"
-     inkscape:window-width="3306"
-     inkscape:window-height="1885"
-     inkscape:window-x="516"
-     inkscape:window-y="270"
+     inkscape:zoom="0.10528769"
+     inkscape:cx="-66.484509"
+     inkscape:cy="-1120.7389"
+     inkscape:window-width="2862"
+     inkscape:window-height="1689"
+     inkscape:window-x="467"
+     inkscape:window-y="212"
      inkscape:window-maximized="0"
      inkscape:current-layer="layer1">
     <inkscape:grid
@@ -56,80 +56,51 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#ffcc00;stroke-width:15.1181;stroke-linejoin:round"
-       id="rect6"
-       width="128"
-       height="136"
-       x="192"
-       y="128"
-       ry="0" />
-    <rect
-       style="fill:#ffcc00;stroke-width:15.1181;stroke-linejoin:round"
-       id="rect5"
-       width="128"
-       height="136"
-       x="344"
-       y="128"
-       ry="0" />
-    <rect
-       style="fill:#ffcc00;stroke-width:15.1181;stroke-linejoin:round"
-       id="rect4"
-       width="128"
-       height="128"
-       x="40"
-       y="128"
-       ry="0" />
+    <path
+       style="fill:#a05a2c;stroke-width:3.77953;stroke-linejoin:round"
+       id="path1"
+       sodipodi:type="arc"
+       sodipodi:cx="256"
+       sodipodi:cy="255.99998"
+       sodipodi:rx="256"
+       sodipodi:ry="256"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="M 512,255.99998 A 256,256 0 0 1 384,477.70249 256,256 0 0 1 127.99999,477.70248 256,256 0 0 1 0,255.99998" />
+    <path
+       style="fill:#ffcc00;stroke-width:3.77953;stroke-linejoin:round"
+       id="path2"
+       sodipodi:type="arc"
+       sodipodi:cx="256"
+       sodipodi:cy="-255.99998"
+       sodipodi:rx="256"
+       sodipodi:ry="256"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       sodipodi:arc-type="arc"
+       d="m 512,-255.99998 a 256,256 0 0 1 -128,221.702501 256,256 0 0 1 -256.00001,-6e-6 A 256,256 0 0 1 0,-255.99998"
+       transform="scale(1,-1)" />
     <path
        style="fill:#ff0000;stroke-width:15.1181;stroke-linejoin:round"
-       d="m 224,168 32,48 32,-48 z"
+       d="m 192,224 64,96 64,-96 z"
        id="path3"
        sodipodi:nodetypes="cccc" />
-    <path
-       style="fill:#a05a2c;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linejoin:round"
-       d="M 0,256 128,448 H 384 L 512,256 Z"
-       id="path15" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linejoin:round"
-       id="rect15"
-       width="32"
-       height="32"
-       x="384"
-       y="160"
-       ry="0" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linejoin:round"
-       id="rect16"
-       width="32"
-       height="32"
-       x="96"
-       y="160"
-       ry="0" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linejoin:round"
-       id="rect17"
-       width="32"
-       height="32"
-       x="192"
-       y="160"
-       ry="0" />
-    <rect
-       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.77953;stroke-linejoin:round"
-       id="rect18"
-       width="32"
-       height="32"
-       x="288"
-       y="160"
-       ry="0" />
-    <path
-       style="fill:#ff0000;stroke-width:15.1181;stroke-linejoin:round"
-       d="m 8,168 32,48 32,-48 z"
-       id="path18"
-       sodipodi:nodetypes="cccc" />
-    <path
-       style="fill:#ff0000;stroke-width:15.1181;stroke-linejoin:round"
-       d="m 440,168 32,48 32,-48 z"
-       id="path19"
-       sodipodi:nodetypes="cccc" />
+    <ellipse
+       style="fill:#000000;stroke-width:3.77953;stroke-linejoin:round"
+       id="ellipse4"
+       cx="368"
+       cy="136"
+       rx="31.999998"
+       ry="32" />
+    <ellipse
+       style="fill:#000000;stroke-width:3.77953;stroke-linejoin:round"
+       id="path4"
+       cx="144"
+       cy="136"
+       rx="31.999998"
+       ry="32" />
   </g>
 </svg>
